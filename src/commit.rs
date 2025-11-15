@@ -8,7 +8,7 @@ pub struct Commit {
 	/// Commit message
 	pub msg: String,
 	/// Scope of the commit (if any)
-	pub scope: Option<String>
+	pub scope: Option<String>,
 }
 
 impl Commit {
@@ -18,8 +18,7 @@ impl Commit {
 
 	/// Convert the scope into a string used to create the commit message
 	pub fn scope(&self) -> String {
-		self
-			.scope
+		self.scope
 			.as_ref()
 			.map(|x| format!("({})", x))
 			.unwrap_or_else(|| "".into())
@@ -35,7 +34,7 @@ impl Commit {
 			CommitType::Refactor => "refactor",
 			CommitType::Perf => "perf",
 			CommitType::Test => "test",
-			CommitType::Chore => "chore"
+			CommitType::Chore => "chore",
 		}
 		.into()
 	}
